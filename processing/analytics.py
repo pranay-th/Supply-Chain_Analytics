@@ -20,7 +20,7 @@ def regional_demand(df):
     return result
 
 def get_delivery_variance(df):
-    result = df['delivery_time_days'].describe()
+    result = df['delivery_time_days'].dropna()
 
     return result
 
