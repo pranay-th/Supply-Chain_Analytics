@@ -1,0 +1,8 @@
+# Dependencies
+numpy
+pandas
+pydantic
+streamlit
+seaborn
+matplotlib
+plotly
