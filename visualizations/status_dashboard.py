@@ -12,7 +12,7 @@ def render_status_dashboard(df):
         y="count",
         title="Order Status Distribution"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig1, use_container_width=True)  # fig → fig1
     st.dataframe(status_data)
 
     fig2 = px.pie(
@@ -21,5 +21,5 @@ def render_status_dashboard(df):
     values="count",
     title="Order Status Distribution"
     )
-    st.plotly_char(fig, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True)  # st.plotly_char → st.plotly_chart, fig → fig2
     

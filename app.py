@@ -16,7 +16,7 @@ def main():
     st.set_page_config(page_title=APP_TITLE, layout="wide")
     st.title(APP_TITLE)
 
-    df = load_orders(RAW_DATA_FILE)
+    df = load_orders()       # load_orders takes no args — RAW_DATA_FILE is used internally
     cleaned_df = clean_orders(df)
 
     if isinstance(cleaned_df, tuple):

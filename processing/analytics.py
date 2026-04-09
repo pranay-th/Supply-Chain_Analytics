@@ -7,7 +7,7 @@ def get_status_distribution(df):
     return status_counts
 
 def get_warehouse_performance(df):
-    result = df.groupby['warehouse'].agg(
+    result = df.groupby('warehouse').agg(          # [] → () : groupby is a method call
         total_orders=("order_id", "count"),
         total_quantity=("order_qty","sum"),
         avg_delivery_time=("delivery_time_days", "mean")
@@ -15,8 +15,11 @@ def get_warehouse_performance(df):
     return result.reset_index()
 
 def regional_demand(df):
-    result = df["order_month"] = df["order_date"].dt.to_period("M")
-
+    df = df.copy()
+    df["order_month"] = df["order_date"].dt.to_period("M")  # chained assignment fixed
+    result = df.groupby("region").agg(
+        total_quantity=("order_qty", "sum")
+    ).reset_index()
     return result
 
 def get_delivery_variance(df):

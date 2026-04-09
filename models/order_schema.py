@@ -24,17 +24,21 @@ class Order(BaseModel):
     @field_validator("order_date")
     @classmethod
     def validate_order_date(cls, v):
-        try:
-            datetime.strptime(v, "%Y-%m-%d")
-        except ValueError:
-            raise ValueError(f"Invalid Date format: {v}")
-        return v
+        for fmt in ("%Y-%m-%d %H:%M:%S.%f", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+            try:
+                datetime.strptime(v, fmt)
+                return v
+            except ValueError:
+                continue
+        raise ValueError(f"Invalid Date format: {v}")
 
     @field_validator("delivery_date")
     @classmethod
     def validate_delivery_date(cls, v):
-        try:
-            datetime.strptime(v, "%Y-%m-%d")
-        except ValueError:
-            raise ValueError(f"Invalid Date format: {v}")
-        return v
+        for fmt in ("%Y-%m-%d %H:%M:%S.%f", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+            try:
+                datetime.strptime(v, fmt)
+                return v
+            except ValueError:
+                continue
+        raise ValueError(f"Invalid Date format: {v}")

@@ -10,8 +10,8 @@ def render_delay_tracking(df):
     fig = px.scatter(
         delay_data,
         x='order_date',
-        y='delivery_time_date',
-        colour='status',
+        y='delivery_time_days',      # delivery_time_date → delivery_time_days (correct column name)
+        color='status',              # colour → color (plotly uses American spelling)
         title='Ontime vs Delayed orders'
     )
 

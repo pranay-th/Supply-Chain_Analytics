@@ -1,11 +1,11 @@
 # Regional demand trends
 import streamlit as st
-import plotly.express as plt
+import plotly.express as px                          # plt → px (wrong alias)
 from processing.analytics import regional_demand
 
 def render_regional_demand(df):
     st.subheader("Regional demand")
-    regional_data = get_regional_demand(df)
+    regional_data = regional_demand(df)             # get_regional_demand → regional_demand (matches analytics.py)
 
     fig = px.bar(
         regional_data,
@@ -16,4 +16,3 @@ def render_regional_demand(df):
 
     st.plotly_chart(fig, use_container_width=True)
     st.dataframe(regional_data)
-    

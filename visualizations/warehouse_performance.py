@@ -1,6 +1,6 @@
 # Warehouse performance charts
 import streamlit as st
-import plotly.express as plt
+import plotly.express as px                          # plt → px (wrong alias)
 from processing.analytics import get_warehouse_performance
 
 
